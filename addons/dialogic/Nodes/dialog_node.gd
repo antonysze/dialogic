@@ -304,17 +304,25 @@ func _process(delta):
 
 
 func _input(event: InputEvent) -> void:
-	if not Engine.is_editor_hint() and event.is_action_pressed(input_next) and not waiting:
-		if not $TextBubble.is_finished():
-			# Skip to end if key is pressed during the text animation
-			$TextBubble.skip()
-		else:
-			if waiting_for_answer == false and waiting_for_input == false:
-				_load_next_event()
-		if settings.has_section_key('dialog', 'propagate_input'):
-			var propagate_input: bool = settings.get_value('dialog', 'propagate_input')
-			if not propagate_input:
-				get_tree().set_input_as_handled()
+	if _can_go_next() and event.is_action_pressed(input_next):
+		_next_action()
+
+
+func _can_go_next() -> bool:
+	return not Engine.is_editor_hint() and not waiting
+
+
+func _next_action():
+	if not $TextBubble.is_finished():
+		# Skip to end if key is pressed during the text animation
+		$TextBubble.skip()
+	else:
+		if waiting_for_answer == false and waiting_for_input == false:
+			_load_next_event()
+	if settings.has_section_key('dialog', 'propagate_input'):
+		var propagate_input: bool = settings.get_value('dialog', 'propagate_input')
+		if not propagate_input:
+			get_tree().set_input_as_handled()
 
 
 func show_dialog():

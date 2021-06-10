@@ -16,6 +16,8 @@ var positions = {
 
 var direction = 'left'
 var debug = false
+var removing = false
+onready var tween_node = $Tween
 
 func init(expression: String = '', position_offset = 'left', mirror = false) -> void:
 	rect_position += positions[position_offset]
@@ -91,11 +93,13 @@ func fade_in(node = self, time = 0.5):
 
 
 func fade_out(node = self, time = 0.5):
+	removing = true
 	tween_modulate(modulate, Color(1,1,1,0), time)
 	$Tween.connect("tween_all_completed", self, "queue_free")
 
 
 func focus():
+	if removing: return
 	tween_modulate(modulate, Color(1,1,1,1))
 	var _parent = get_parent()
 	if _parent:
@@ -104,6 +108,7 @@ func focus():
 
 
 func focusout():
+	if removing: return
 	tween_modulate(modulate, Color(0.5,0.5,0.5,1))
 	var _parent = get_parent()
 	if _parent:

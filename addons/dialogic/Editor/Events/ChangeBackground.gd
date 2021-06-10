@@ -1,6 +1,9 @@
 tool
 extends "res://addons/dialogic/Editor/Events/Templates/EventTemplate.gd"
 
+const FADE_KEY := 'fade'
+onready var fade_check_box : CheckBox = $PanelContainer/MarginContainer/VBoxContainer/Header/FadeCheckBox
+
 var preview_scene = preload("res://addons/dialogic/Editor/Events/Common/Images/ImagePreview.tscn")
 
 var preview = "..."
@@ -13,15 +16,20 @@ func _ready():
 	image_picker.editor_reference = editor_reference
 	image_picker.connect("file_selected", self, "_on_file_selected")
 	image_picker.connect("clear_pressed", self, "_on_clear_pressed")
+	fade_check_box.connect("toggled", self, "_on_FadeCheckBox_toggled")
 	# Init the data
 	event_data = {
-		'background': ''
+		'background': '',
+		FADE_KEY: false
 	}
 
 
 func load_data(data):
 	.load_data(data)
 	load_image(event_data['background'])
+	if not event_data.has(FADE_KEY):
+		event_data[FADE_KEY] = false
+	fade_check_box.pressed = event_data[FADE_KEY]
 
 
 func load_image(img_src: String):
@@ -46,3 +54,7 @@ func _on_file_selected(path):
 
 func _on_clear_pressed():
 	load_image('')
+
+
+func _on_FadeCheckBox_toggled(button_pressed: bool):
+	event_data[FADE_KEY] = button_pressed

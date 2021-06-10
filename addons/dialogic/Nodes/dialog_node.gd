@@ -497,36 +497,9 @@ func event_handler(event: Dictionary):
 				_load_next_event()
 		{'scene'}:
 			get_tree().change_scene(event['scene'])
-		{'background'}:
+		{'background', 'fade'}:
 			emit_signal("event_start", "background", event)
-			var background = get_node_or_null('Background')
-			if event['background'] == '' and background != null:
-				background.queue_free()
-			else:
-				if background == null:
-					background = TextureRect.new()
-					background.expand = true
-					background.name = 'Background'
-					background.anchor_right = 1
-					background.anchor_bottom = 1
-					background.stretch_mode = TextureRect.STRETCH_SCALE
-					background.show_behind_parent = true
-					background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-					call_deferred('resize_main') # Executing the resize main to update the background size
-					
-					add_child(background)
-				background.texture = null
-				if (background.get_child_count() > 0):
-					for c in background.get_children():
-						c.get_parent().remove_child(c)
-						c.queue_free()
-				if (event['background'].ends_with('.tscn')):
-					var bg_scene = load(event['background'])
-					if (bg_scene):
-						bg_scene = bg_scene.instance()
-						background.add_child(bg_scene)
-				elif (event['background'] != ''):
-					background.texture = load(event['background'])
+			_change_background_event(event)
 			_load_next_event()
 		{'audio'}, {'audio', 'file', ..}:
 			emit_signal("event_start", "audio", event)
@@ -638,6 +611,38 @@ func event_handler(event: Dictionary):
 			dprint('[D] Other event. ', event)
 	
 	$Options.visible = waiting_for_answer
+
+
+func _change_background_event(event: Dictionary):
+	var background = get_node_or_null('Background')
+	if event['background'] == '' and background != null:
+		background.queue_free()
+	else:
+		if background == null:
+			background = TextureRect.new()
+			background.expand = true
+			background.name = 'Background'
+			background.anchor_right = 1
+			background.anchor_bottom = 1
+			background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			background.show_behind_parent = true
+			background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			call_deferred('resize_main') # Executing the resize main to update the background size
+			
+			add_child(background)
+		background.texture = null
+		if (background.get_child_count() > 0):
+			for c in background.get_children():
+				c.get_parent().remove_child(c)
+				c.queue_free()
+		if (event['background'].ends_with('.tscn')):
+			var bg_scene = load(event['background'])
+			if (bg_scene):
+				bg_scene = bg_scene.instance()
+				background.add_child(bg_scene)
+		elif (event['background'] != ''):
+			background.texture = load(event['background'])
+	
 
 
 func reset_options():

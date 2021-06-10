@@ -8,7 +8,7 @@ content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.2652, 0.2784, 0.3114, 1 )
+bg_color = Color( 0.252, 0.2718, 0.3246, 1 )
 
 [node name="ThemeEditor" type="ScrollContainer"]
 anchor_right = 1.0
@@ -21,25 +21,25 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 1018.0
-margin_bottom = 911.0
+margin_right = 1274.0
+margin_bottom = 1031.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 15
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
-margin_right = 1018.0
-margin_bottom = 297.0
-rect_min_size = Vector2( 0, 297 )
+margin_right = 1274.0
+margin_bottom = 317.0
+rect_min_size = Vector2( 0, 317 )
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 312.0
-margin_right = 1018.0
-margin_bottom = 372.0
+margin_top = 332.0
+margin_right = 1274.0
+margin_bottom = 392.0
 custom_constants/separation = 10
 
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer3"]
-margin_right = 856.0
+margin_right = 1112.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 400, 60 )
 size_flags_horizontal = 3
@@ -48,22 +48,21 @@ text = "This is preview text. You can use  [color=#A5EFAC]BBCode[/color] to styl
 wrap_enabled = true
 
 [node name="PreviewButton" type="Button" parent="VBoxContainer/HBoxContainer3"]
-margin_left = 866.0
-margin_right = 1018.0
+margin_left = 1122.0
+margin_right = 1274.0
 margin_bottom = 60.0
 text = "  Preview changes  "
 icon = ExtResource( 1 )
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
-margin_top = 387.0
-margin_right = 1018.0
-margin_bottom = 911.0
+margin_top = 407.0
+margin_right = 1274.0
+margin_bottom = 1031.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tab_align = 0
 
 [node name="Dialog Text" type="HBoxContainer" parent="VBoxContainer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -74,7 +73,7 @@ custom_constants/separation = 10
 
 [node name="Column" type="VBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text"]
 margin_right = 270.0
-margin_bottom = 488.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 270, 0 )
 size_flags_vertical = 3
 __meta__ = {
@@ -90,7 +89,7 @@ text = "Visuals"
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column"]
 margin_top = 26.0
 margin_right = 270.0
-margin_bottom = 166.0
+margin_bottom = 190.0
 size_flags_horizontal = 3
 custom_constants/hseparation = 10
 columns = 2
@@ -109,31 +108,46 @@ margin_bottom = 20.0
 size_flags_vertical = 4
 text = "DefaultFont"
 
-[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
-margin_top = 32.0
+[node name="CharacterFontLabel" type="Label" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
+margin_top = 27.0
 margin_right = 102.0
-margin_bottom = 46.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "Character Font"
+
+[node name="CharacterFontButton" type="Button" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
+margin_left = 112.0
+margin_top = 24.0
+margin_right = 270.0
+margin_bottom = 44.0
+size_flags_vertical = 4
+text = "DefaultFont"
+
+[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
+margin_top = 56.0
+margin_right = 102.0
+margin_bottom = 70.0
 text = "Color"
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
 margin_left = 112.0
-margin_top = 24.0
+margin_top = 48.0
 margin_right = 270.0
-margin_bottom = 54.0
+margin_bottom = 78.0
 rect_min_size = Vector2( 50, 30 )
 color = Color( 1, 1, 1, 1 )
 
 [node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
-margin_top = 61.0
+margin_top = 85.0
 margin_right = 102.0
-margin_bottom = 75.0
+margin_bottom = 99.0
 text = "Alignment"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
 margin_left = 112.0
-margin_top = 58.0
+margin_top = 82.0
 margin_right = 270.0
-margin_bottom = 78.0
+margin_bottom = 102.0
 
 [node name="Alignment" type="OptionButton" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/HBoxContainer3"]
 margin_right = 158.0
@@ -144,16 +158,16 @@ items = [ "Left", null, false, 0, null, "Center", null, false, 1, null, "Right",
 selected = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
-margin_top = 90.0
+margin_top = 114.0
 margin_right = 102.0
-margin_bottom = 104.0
+margin_bottom = 128.0
 text = "Shadow"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
 margin_left = 112.0
-margin_top = 82.0
+margin_top = 106.0
 margin_right = 270.0
-margin_bottom = 112.0
+margin_bottom = 136.0
 
 [node name="CheckBoxShadow" type="CheckBox" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/HBoxContainer2"]
 margin_right = 24.0
@@ -168,16 +182,16 @@ size_flags_horizontal = 3
 color = Color( 0, 0, 0, 0.619608 )
 
 [node name="Label4" type="Label" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
-margin_top = 121.0
+margin_top = 145.0
 margin_right = 102.0
-margin_bottom = 135.0
+margin_bottom = 159.0
 text = "Shadow Offset"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer"]
 margin_left = 112.0
-margin_top = 116.0
+margin_top = 140.0
 margin_right = 270.0
-margin_bottom = 140.0
+margin_bottom = 164.0
 custom_constants/separation = 10
 
 [node name="ShadowOffsetX" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/HBoxContainer"]
@@ -200,12 +214,12 @@ prefix = "Y"
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/TabContainer/Dialog Text"]
 margin_left = 280.0
 margin_right = 284.0
-margin_bottom = 488.0
+margin_bottom = 588.0
 
 [node name="Column2" type="VBoxContainer" parent="VBoxContainer/TabContainer/Dialog Text"]
 margin_left = 294.0
 margin_right = 564.0
-margin_bottom = 488.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 270, 0 )
 size_flags_vertical = 3
 __meta__ = {
@@ -252,8 +266,8 @@ margin_bottom = -4.0
 custom_constants/separation = 10
 
 [node name="Column" type="VBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box"]
-margin_right = 288.0
-margin_bottom = 325.0
+margin_right = 310.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 270, 0 )
 size_flags_vertical = 3
 __meta__ = {
@@ -261,29 +275,29 @@ __meta__ = {
 }
 
 [node name="SectionTitle" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column"]
-margin_right = 288.0
+margin_right = 310.0
 margin_bottom = 22.0
 custom_styles/normal = SubResource( 1 )
 text = "Visuals"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column"]
 margin_top = 26.0
-margin_right = 288.0
-margin_bottom = 190.0
+margin_right = 310.0
+margin_bottom = 218.0
 size_flags_horizontal = 3
 custom_constants/hseparation = 10
 columns = 2
 
 [node name="Label5" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
 margin_top = 5.0
-margin_right = 126.0
+margin_right = 148.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Background Color"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
-margin_left = 136.0
-margin_right = 288.0
+margin_left = 158.0
+margin_right = 310.0
 margin_bottom = 24.0
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer2"]
@@ -298,14 +312,14 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
 margin_top = 33.0
-margin_right = 126.0
+margin_right = 148.0
 margin_bottom = 47.0
 text = "Background Texture"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
-margin_left = 136.0
+margin_left = 158.0
 margin_top = 28.0
-margin_right = 288.0
+margin_right = 310.0
 margin_bottom = 52.0
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer3"]
@@ -322,14 +336,14 @@ text = "background-2"
 
 [node name="Label9" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
 margin_top = 61.0
-margin_right = 126.0
+margin_right = 148.0
 margin_bottom = 75.0
 text = "Texture Modulation"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
-margin_left = 136.0
+margin_left = 158.0
 margin_top = 56.0
-margin_right = 288.0
+margin_right = 310.0
 margin_bottom = 80.0
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer6"]
@@ -342,20 +356,20 @@ margin_right = 152.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
-[node name="Label6" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
+[node name="Label-BoxpaddingH" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
 margin_top = 89.0
-margin_right = 126.0
+margin_right = 148.0
 margin_bottom = 103.0
 size_flags_horizontal = 3
-text = "Box padding"
+text = "Box padding Horizontal"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
-margin_left = 136.0
+[node name="HBoxContainer-BoxpaddingH" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
+margin_left = 158.0
 margin_top = 84.0
-margin_right = 288.0
+margin_right = 310.0
 margin_bottom = 108.0
 
-[node name="TextOffsetV" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer"]
+[node name="TextOffsetHL" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingH"]
 margin_right = 74.0
 margin_bottom = 24.0
 max_value = 1e+07
@@ -363,8 +377,42 @@ value = 10.0
 rounded = true
 allow_greater = true
 allow_lesser = true
+prefix = "L"
 
-[node name="TextOffsetH" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer"]
+[node name="TextOffsetHR" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingH"]
+margin_right = 74.0
+margin_bottom = 24.0
+max_value = 1e+07
+value = 10.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+prefix = "R"
+
+[node name="Label-BoxpaddingV" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
+margin_top = 117.0
+margin_right = 148.0
+margin_bottom = 131.0
+size_flags_horizontal = 3
+text = "Box padding Vertial"
+
+[node name="HBoxContainer-BoxpaddingV" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
+margin_left = 158.0
+margin_top = 112.0
+margin_right = 310.0
+margin_bottom = 136.0
+
+[node name="TextOffsetVT" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingV"]
+margin_right = 74.0
+margin_bottom = 24.0
+max_value = 1e+07
+value = 10.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+prefix = "T"
+
+[node name="TextOffsetVB" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingV"]
 margin_left = 78.0
 margin_right = 152.0
 margin_bottom = 24.0
@@ -373,18 +421,19 @@ value = 20.0
 rounded = true
 allow_greater = true
 allow_lesser = true
+prefix = "B"
 
 [node name="Label7" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
-margin_top = 117.0
-margin_right = 126.0
-margin_bottom = 131.0
+margin_top = 145.0
+margin_right = 148.0
+margin_bottom = 159.0
 text = "Box size (pixels)"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
-margin_left = 136.0
-margin_top = 112.0
-margin_right = 288.0
-margin_bottom = 136.0
+margin_left = 158.0
+margin_top = 140.0
+margin_right = 310.0
+margin_bottom = 164.0
 
 [node name="BoxSizeW" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer4"]
 margin_right = 74.0
@@ -405,16 +454,16 @@ allow_greater = true
 allow_lesser = true
 
 [node name="Label8" type="Label" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
-margin_top = 145.0
-margin_right = 126.0
-margin_bottom = 159.0
+margin_top = 173.0
+margin_right = 148.0
+margin_bottom = 187.0
 text = "Bottom gap"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
-margin_left = 136.0
-margin_top = 140.0
-margin_right = 288.0
-margin_bottom = 164.0
+margin_left = 158.0
+margin_top = 168.0
+margin_right = 310.0
+margin_bottom = 192.0
 
 [node name="BottomGap" type="SpinBox" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer5"]
 margin_right = 74.0
@@ -426,14 +475,14 @@ allow_greater = true
 allow_lesser = true
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/TabContainer/Dialog Box"]
-margin_left = 298.0
-margin_right = 302.0
-margin_bottom = 325.0
+margin_left = 320.0
+margin_right = 324.0
+margin_bottom = 588.0
 
 [node name="Column2" type="VBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box"]
-margin_left = 312.0
-margin_right = 582.0
-margin_bottom = 325.0
+margin_left = 334.0
+margin_right = 604.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 270, 0 )
 size_flags_vertical = 3
 __meta__ = {
@@ -535,14 +584,14 @@ allow_greater = true
 allow_lesser = true
 
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/TabContainer/Dialog Box"]
-margin_left = 592.0
-margin_right = 596.0
-margin_bottom = 325.0
+margin_left = 614.0
+margin_right = 618.0
+margin_bottom = 588.0
 
 [node name="Column3" type="VBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box"]
-margin_left = 606.0
-margin_right = 876.0
-margin_bottom = 325.0
+margin_left = 628.0
+margin_right = 898.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 270, 0 )
 size_flags_vertical = 3
 __meta__ = {
@@ -596,7 +645,7 @@ custom_constants/separation = 10
 
 [node name="Column" type="VBoxContainer" parent="VBoxContainer/TabContainer/Name Label"]
 margin_right = 287.0
-margin_bottom = 325.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 270, 0 )
 size_flags_vertical = 3
 __meta__ = {
@@ -684,12 +733,12 @@ prefix = "Y"
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/TabContainer/Name Label"]
 margin_left = 297.0
 margin_right = 301.0
-margin_bottom = 325.0
+margin_bottom = 588.0
 
 [node name="Column2" type="VBoxContainer" parent="VBoxContainer/TabContainer/Name Label"]
 margin_left = 311.0
 margin_right = 581.0
-margin_bottom = 325.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 270, 0 )
 size_flags_vertical = 3
 __meta__ = {
@@ -779,12 +828,12 @@ size_flags_horizontal = 3
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/TabContainer/Name Label"]
 margin_left = 591.0
 margin_right = 595.0
-margin_bottom = 325.0
+margin_bottom = 588.0
 
 [node name="Column3" type="VBoxContainer" parent="VBoxContainer/TabContainer/Name Label"]
 margin_left = 605.0
 margin_right = 875.0
-margin_bottom = 325.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 270, 0 )
 size_flags_vertical = 3
 __meta__ = {
@@ -823,7 +872,30 @@ value = 48.0
 allow_greater = true
 allow_lesser = true
 
+[node name="GridContainer-HorizontalOffset" type="GridContainer" parent="VBoxContainer/TabContainer/Name Label/Column3"]
+margin_top = 54.0
+margin_right = 270.0
+margin_bottom = 78.0
+columns = 2
+
+[node name="Label-HorizontalOffset" type="Label" parent="VBoxContainer/TabContainer/Name Label/Column3/GridContainer-HorizontalOffset"]
+margin_top = 5.0
+margin_right = 192.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Horizontal Offset"
+
+[node name="HorizontalOffset" type="SpinBox" parent="VBoxContainer/TabContainer/Name Label/Column3/GridContainer-HorizontalOffset"]
+margin_left = 196.0
+margin_right = 270.0
+margin_bottom = 24.0
+max_value = 999.0
+value = 48.0
+allow_greater = true
+allow_lesser = true
+
 [node name="Choice Buttons" type="HBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -1281,9 +1353,11 @@ prefix = "Y"
 
 [node name="DelayPreviewTimer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer3/TextEdit" to="." method="_on_Preview_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/PreviewButton" to="." method="_on_PreviewButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/FontButton" to="." method="_on_FontButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/CharacterFontButton" to="." method="_on_ChacaterFontButton_pressed"]
 [connection signal="color_changed" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
 [connection signal="item_selected" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/HBoxContainer3/Alignment" to="." method="_on_Alignment_item_selected"]
 [connection signal="toggled" from="VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/HBoxContainer2/CheckBoxShadow" to="." method="_on_CheckBoxShadow_toggled"]
@@ -1297,8 +1371,10 @@ one_shot = true
 [connection signal="pressed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer3/BackgroundTextureButton" to="." method="_on_BackgroundTextureButton_pressed"]
 [connection signal="toggled" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer6/CheckBox" to="." method="_on_BackgroundTexture_Modulation_toggled"]
 [connection signal="color_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer6/ColorPickerButton" to="." method="_on_ColorPicker_Background_texture_modulation_color_changed"]
-[connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer/TextOffsetV" to="." method="_on_TextMargin_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer/TextOffsetH" to="." method="_on_TextMargin_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingH/TextOffsetHL" to="." method="_on_TextMarginH_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingH/TextOffsetHR" to="." method="_on_TextMarginH_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingV/TextOffsetVT" to="." method="_on_TextMarginV_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingV/TextOffsetVB" to="." method="_on_TextMarginV_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer4/BoxSizeW" to="." method="_on_BoxSize_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer4/BoxSizeH" to="." method="_on_BoxSize_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer5/BottomGap" to="." method="_on_BottomGap_value_changed"]
@@ -1321,6 +1397,7 @@ one_shot = true
 [connection signal="toggled" from="VBoxContainer/TabContainer/Name Label/Column2/GridContainer/HBoxContainer6/CheckBox" to="." method="_on_NameLabel_texture_modulation_toggled"]
 [connection signal="color_changed" from="VBoxContainer/TabContainer/Name Label/Column2/GridContainer/HBoxContainer6/ColorPickerButton" to="." method="_on_ColorPicker_NameLabel_modulation_color_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Name Label/Column3/GridContainer/HBoxContainer5/BottomGap" to="." method="_on_name_BottomGap_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Name Label/Column3/GridContainer-HorizontalOffset/HorizontalOffset" to="." method="_on_name_HorizontalOffset_value_changed"]
 [connection signal="toggled" from="VBoxContainer/TabContainer/Choice Buttons/Column/GridContainer/HBoxContainer4/CheckBox2" to="." method="_on_Custom_Button_Color_toggled"]
 [connection signal="color_changed" from="VBoxContainer/TabContainer/Choice Buttons/Column/GridContainer/HBoxContainer4/ButtonTextColor" to="." method="_on_ButtonTextColor_color_changed"]
 [connection signal="toggled" from="VBoxContainer/TabContainer/Choice Buttons/Column/GridContainer/HBoxContainer2/CheckBox" to="." method="_on_button_background_visible_toggled"]

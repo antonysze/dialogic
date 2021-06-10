@@ -61,7 +61,8 @@ func load_theme(theme: ConfigFile):
 	# Text
 	var theme_font = DialogicUtil.path_fixer_load(theme.get_value('text', 'font', 'res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres'))
 	text_label.set('custom_fonts/normal_font', theme_font)
-	name_label.set('custom_fonts/font', theme_font)
+	var theme_charcater_font = DialogicUtil.path_fixer_load(theme.get_value('text', 'character_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres'))
+	name_label.set('custom_fonts/font', theme_charcater_font)
 
 	var text_color = Color(theme.get_value('text', 'color', '#ffffffff'))
 	text_label.set('custom_colors/default_color', text_color)
@@ -83,11 +84,12 @@ func load_theme(theme: ConfigFile):
 	text_speed = theme.get_value('text','speed', 2) * 0.01
 
 	# Margin
-	var text_margin = theme.get_value('text', 'margin', Vector2(20, 10))
-	text_label.set('margin_left', text_margin.x)
-	text_label.set('margin_right', text_margin.x * -1)
-	text_label.set('margin_top', text_margin.y)
-	text_label.set('margin_bottom', text_margin.y * -1)
+	var text_margin_v = theme.get_value('text', 'margin_v', Vector2(10, 10))
+	var text_margin_h = theme.get_value('text', 'margin_h', Vector2(20, 20))
+	text_label.set('margin_left', text_margin_h.x)
+	text_label.set('margin_right', -text_margin_h.y)
+	text_label.set('margin_top', text_margin_v.x)
+	text_label.set('margin_bottom', -text_margin_v.y)
 
 	# Backgrounds
 	$TextureRect.texture = DialogicUtil.path_fixer_load(theme.get_value('background','image', "res://addons/dialogic/Example Assets/backgrounds/background-2.png"))
@@ -128,6 +130,7 @@ func load_theme(theme: ConfigFile):
 		name_label.set('custom_constants/shadow_offset_x', name_shadow_offset.x)
 		name_label.set('custom_constants/shadow_offset_y', name_shadow_offset.y)
 	name_label.rect_position.y = theme.get_value('name', 'bottom_gap', 48) * -1
+	name_label.rect_position.x = theme.get_value('name', 'name_horizontal_offset', 0)
 	if theme.get_value('name', 'modulation', false) == true:
 		$NameLabel/TextureRect.modulate = Color(theme.get_value('name', 'modulation_color', '#ffffffff'))
 	else:

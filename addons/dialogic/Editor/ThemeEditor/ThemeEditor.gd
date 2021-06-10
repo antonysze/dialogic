@@ -33,6 +33,7 @@ onready var n : Dictionary = {
 	'theme_text_shadow_color': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/HBoxContainer2/ColorPickerButtonShadow",
 	'theme_text_color': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/ColorPickerButton",
 	'theme_font': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/FontButton",
+	'theme_character_font': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/CharacterFontButton",
 	'theme_shadow_offset_x': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/HBoxContainer/ShadowOffsetX",
 	'theme_shadow_offset_y': $"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/HBoxContainer/ShadowOffsetY",
 	'theme_text_speed': $"VBoxContainer/TabContainer/Dialog Text/Column2/GridContainer/TextSpeed",
@@ -49,8 +50,10 @@ onready var n : Dictionary = {
 	'theme_action_key': $"VBoxContainer/TabContainer/Dialog Box/Column3/GridContainer/BoxContainer/ActionOptionButton",
 	'theme_background_color_visible': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer2/CheckBox",
 	'theme_background_color': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer2/ColorPickerButton",
-	'theme_text_margin': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer/TextOffsetV",
-	'theme_text_margin_h': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer/TextOffsetH",
+	'theme_text_margin_v_top': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingV/TextOffsetVT",
+	'theme_text_margin_v_bottom': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingV/TextOffsetVB",
+	'theme_text_margin_h_left': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingH/TextOffsetHL",
+	'theme_text_margin_h_right': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer-BoxpaddingH/TextOffsetHR",
 	'size_w': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer4/BoxSizeW",
 	'size_h': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer4/BoxSizeH", 
 	'bottom_gap': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer5/BottomGap",
@@ -68,6 +71,7 @@ onready var n : Dictionary = {
 	'name_shadow_offset_x': $"VBoxContainer/TabContainer/Name Label/Column/GridContainer/HBoxContainer/ShadowOffsetX",
 	'name_shadow_offset_y': $"VBoxContainer/TabContainer/Name Label/Column/GridContainer/HBoxContainer/ShadowOffsetY",
 	'name_bottom_gap': $"VBoxContainer/TabContainer/Name Label/Column3/GridContainer/HBoxContainer5/BottomGap",
+	'name_horizontal_offset': $"VBoxContainer/TabContainer/Name Label/Column3/GridContainer-HorizontalOffset/HorizontalOffset",
 	'name_background_modulation': $"VBoxContainer/TabContainer/Name Label/Column2/GridContainer/HBoxContainer6/CheckBox",
 	'name_background_modulation_color': $"VBoxContainer/TabContainer/Name Label/Column2/GridContainer/HBoxContainer6/ColorPickerButton",
 	
@@ -189,13 +193,18 @@ func load_theme(filename):
 	# Text
 	n['theme_text_speed'].value = theme.get_value('text','speed', 2)
 	n['theme_font'].text = DialogicResources.get_filename_from_path(theme.get_value('text', 'font', 'res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres'))
+	n['theme_character_font'].text = DialogicResources.get_filename_from_path(theme.get_value('text', 'character_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres'))
 	n['theme_text_color'].color = Color(theme.get_value('text', 'color', '#ffffffff'))
 	n['theme_text_shadow'].pressed = theme.get_value('text', 'shadow', false)
 	n['theme_text_shadow_color'].color = Color(theme.get_value('text', 'shadow_color', '#9e000000'))
 	n['theme_shadow_offset_x'].value = theme.get_value('text', 'shadow_offset', Vector2(2,2)).x
 	n['theme_shadow_offset_y'].value = theme.get_value('text', 'shadow_offset', Vector2(2,2)).y
-	n['theme_text_margin'].value = theme.get_value('text', 'margin', Vector2(20, 10)).x
-	n['theme_text_margin_h'].value = theme.get_value('text', 'margin', Vector2(20, 10)).y
+	var margin_v = theme.get_value('text', 'margin_v', Vector2(10, 10))
+	n['theme_text_margin_v_top'].value = margin_v.x
+	n['theme_text_margin_v_bottom'].value = margin_v.y
+	var margin_h = theme.get_value('text', 'margin_h', Vector2(20, 20))
+	n['theme_text_margin_h_left'].value = margin_h.x
+	n['theme_text_margin_h_right'].value = margin_h.y
 	n['alignment'].text = theme.get_value('text', 'alignment', 'Left')
 	match n['alignment'].text:
 		'Left':
@@ -223,6 +232,7 @@ func load_theme(filename):
 	n['name_shadow_offset_x'].value = theme.get_value('name', 'shadow_offset', Vector2(2,2)).x
 	n['name_shadow_offset_y'].value = theme.get_value('name', 'shadow_offset', Vector2(2,2)).y
 	n['name_bottom_gap'].value = theme.get_value('name', 'bottom_gap', 48)
+	n['name_horizontal_offset'].value = theme.get_value('name', 'horizontal_offset', 0)
 	
 	
 	# Next indicator animations
@@ -385,6 +395,18 @@ func _on_Font_selected(path, target) -> void:
 	n['theme_font'].text = DialogicResources.get_filename_from_path(path)
 	_on_PreviewButton_pressed() # Refreshing the preview
 
+func _on_ChacaterFontButton_pressed() -> void:
+	editor_reference.godot_dialog("*.tres")
+	editor_reference.godot_dialog_connect(self, "_on_ChacaterFont_selected")
+
+
+func _on_ChacaterFont_selected(path, target) -> void:
+	if loading:
+		return
+	DialogicResources.set_theme_value(current_theme, 'text','character_font', path)
+	n['theme_character_font'].text = DialogicResources.get_filename_from_path(path)
+	_on_PreviewButton_pressed() # Refreshing the preview
+
 
 func _on_textSpeed_value_changed(value) -> void:
 	if loading:
@@ -393,14 +415,25 @@ func _on_textSpeed_value_changed(value) -> void:
 	_on_PreviewButton_pressed() # Refreshing the preview
 
 
-func _on_TextMargin_value_changed(value) -> void:
+func _on_TextMarginV_value_changed(value) -> void:
 	if loading:
 		return
 	var final_vector = Vector2(
-		n['theme_text_margin'].value,
-		n['theme_text_margin_h'].value
+		n['theme_text_margin_v_top'].value,
+		n['theme_text_margin_v_bottom'].value
 	)
-	DialogicResources.set_theme_value(current_theme, 'text', 'margin', final_vector)
+	DialogicResources.set_theme_value(current_theme, 'text', 'margin_v', final_vector)
+	_on_PreviewButton_pressed() # Refreshing the preview
+	
+
+func _on_TextMarginH_value_changed(value) -> void:
+	if loading:
+		return
+	var final_vector = Vector2(
+		n['theme_text_margin_h_left'].value,
+		n['theme_text_margin_h_right'].value
+	)
+	DialogicResources.set_theme_value(current_theme, 'text', 'margin_h', final_vector)
 	_on_PreviewButton_pressed() # Refreshing the preview
 
 
@@ -666,6 +699,13 @@ func _on_name_BottomGap_value_changed(value) -> void:
 	if loading:
 		return
 	DialogicResources.set_theme_value(current_theme, 'name', 'bottom_gap', value)
+	_on_PreviewButton_pressed() # Refreshing the preview
+	
+	
+func _on_name_HorizontalOffset_value_changed(value) -> void:
+	if loading:
+		return
+	DialogicResources.set_theme_value(current_theme, 'name', 'name_horizontal_offset', value)
 	_on_PreviewButton_pressed() # Refreshing the preview
 
 

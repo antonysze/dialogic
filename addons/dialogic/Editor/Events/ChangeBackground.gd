@@ -56,5 +56,5 @@ func _on_clear_pressed():
 	load_image('')
 
 
-func _on_FadeCheckBox_toggled(button_pressed: bool):
+func _on_FadeCheckBox_toggled(button_pressed):
 	event_data[FADE_KEY] = button_pressed

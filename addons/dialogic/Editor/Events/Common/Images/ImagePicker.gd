@@ -4,7 +4,7 @@ extends HBoxContainer
 var editor_reference
 
 signal clear_pressed()
-signal file_selected()
+signal file_selected(path)
 
 onready var name_label = $Name
 onready var clear_button = $ClearButton

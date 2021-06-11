@@ -22,7 +22,7 @@ var moving_piece = null
 var piece_was_dragged = false
 
 func _has_template(event):
-	return event.event_data.has("background") or event.event_data.has("wait_seconds")
+	return event.event_data.has("background") or event.event_data.has("wait_seconds") or event.event_data.has("shake_amplitude")
 
 
 func _ready():
@@ -466,6 +466,10 @@ func load_timeline(filename: String):
 				create_event("SetTheme", i)
 			{'call_node'}:
 				create_event("CallNode", i)
+			{'shake_amplitude', 'duration'}:
+				create_event("ShakeScreen", i)
+			{'shake_amplitude', 'duration', 'character'}:
+				create_event("ShakeCharacter", i)
 
 	if data.size() < 1:
 		events_warning.visible = true

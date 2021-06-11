@@ -18,6 +18,8 @@ var direction = 'left'
 var debug = false
 var removing = false
 onready var tween_node = $Tween
+var shake_amplitude: float
+var original_pos: Vector2
 
 func init(expression: String = '', position_offset = 'left', mirror = false) -> void:
 	rect_position += positions[position_offset]
@@ -84,7 +86,6 @@ func fade_in(node = self, time = 0.5):
 	else:
 		node.rect_position += Vector2(0, 40)
 	
-	var tween_node = node.get_node('Tween')
 	tween_node.interpolate_property(
 		node, "rect_position", node.rect_position, node.rect_position + end_pos, time,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
@@ -117,10 +118,21 @@ func focusout():
 
 
 func tween_modulate(from_value, to_value, time = 0.5):
-	var tween_node = $Tween
 	tween_node.interpolate_property(
 		self, "modulate", from_value, to_value, time,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
 	)
 	tween_node.start()
 	return tween_node
+
+
+func shake(amplitude, duration):
+	if removing: return
+	tween_node.seek(INF)
+	original_pos = rect_position
+	shake_amplitude = amplitude * get_viewport_rect().size.y / 100.0
+	tween_node.interpolate_method(self, '_shake_tween_method', 0.0, 1.0, duration, Tween.TRANS_LINEAR)
+
+
+func _shake_tween_method(target):
+	TweenUtils.shake_control(self, original_pos, target, shake_amplitude)

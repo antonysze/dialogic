@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://addons/dialogic/Images/Event Icons/Main Icons/character-join.svg" type="Texture" id=1]
 [ext_resource path="res://addons/dialogic/Images/Event Icons/Main Icons/text-event.svg" type="Texture" id=2]
@@ -22,15 +22,15 @@
 [ext_resource path="res://addons/dialogic/Images/Event Icons/Main Icons/call-node.svg" type="Texture" id=20]
 [ext_resource path="res://addons/dialogic/Editor/TimelineEditor/EventButton.gd" type="Script" id=21]
 [ext_resource path="res://addons/dialogic/Editor/TimelineEditor/TimelineArea.gd" type="Script" id=22]
-
-
+[ext_resource path="res://addons/dialogic/Images/Event Icons/Main Icons/animation-shake-character.png" type="Texture" id=23]
+[ext_resource path="res://addons/dialogic/Images/Event Icons/Main Icons/animation-shake.png" type="Texture" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
 content_margin_bottom = 5.0
-bg_color = Color( 0, 0, 0, 1 )
+bg_color = Color( 0.15, 0.1725, 0.2325, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -60,8 +60,8 @@ __meta__ = {
 }
 
 [node name="TimelineArea" type="ScrollContainer" parent="."]
-margin_right = 836.0
-margin_bottom = 738.0
+margin_right = 1728.0
+margin_bottom = 1218.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/bg = SubResource( 1 )
@@ -73,22 +73,22 @@ __meta__ = {
 [node name="TimeLine" type="VBoxContainer" parent="TimelineArea"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 831.0
-margin_bottom = 733.0
+margin_right = 1723.0
+margin_bottom = 1213.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 844.0
-margin_right = 1024.0
-margin_bottom = 738.0
+margin_left = 1740.0
+margin_right = 1920.0
+margin_bottom = 1218.0
 rect_min_size = Vector2( 180, 0 )
 
 [node name="EventContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 180.0
-margin_bottom = 738.0
+margin_bottom = 1218.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -390,3 +390,43 @@ icon = ExtResource( 20 )
 align = 0
 script = ExtResource( 21 )
 EventName = "CallNode"
+
+[node name="HBoxContainer-Animation" type="HBoxContainer" parent="ScrollContainer/EventContainer"]
+margin_top = 732.0
+margin_right = 180.0
+margin_bottom = 746.0
+
+[node name="Label" type="Label" parent="ScrollContainer/EventContainer/HBoxContainer-Animation"]
+margin_right = 66.0
+margin_bottom = 14.0
+text = "Animation"
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/EventContainer/HBoxContainer-Animation"]
+margin_left = 70.0
+margin_right = 180.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="ShakeScreen" type="Button" parent="ScrollContainer/EventContainer"]
+margin_top = 750.0
+margin_right = 180.0
+margin_bottom = 778.0
+rect_min_size = Vector2( 0, 28 )
+text = "Shake Screen"
+icon = ExtResource( 24 )
+align = 0
+expand_icon = true
+script = ExtResource( 21 )
+EventName = "ShakeScreen"
+
+[node name="ShakeCharacter" type="Button" parent="ScrollContainer/EventContainer"]
+margin_top = 782.0
+margin_right = 180.0
+margin_bottom = 810.0
+rect_min_size = Vector2( 0, 28 )
+text = "Shake Character"
+icon = ExtResource( 23 )
+align = 0
+expand_icon = true
+script = ExtResource( 21 )
+EventName = "ShakeCharacter"

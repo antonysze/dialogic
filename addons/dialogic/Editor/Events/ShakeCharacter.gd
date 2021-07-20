@@ -7,6 +7,7 @@ func _set_default_data():
 		'shake_amplitude': 1.0,
 		'duration': 0.25,
 		'character': '',
+		'event_id': 'dialogic_rr_002',
 	}
 	get_header().show_character_picker(true)
 

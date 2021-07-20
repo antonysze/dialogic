@@ -30,10 +30,10 @@ func _load_event():
 
 
 func _other_event_handler(event: Dictionary):
-	match event:
-		{'shake_amplitude', 'duration'}:
+	match event['event_id']:
+		'dialogic_rr_001':
 			_shake_screen_event(event)
-		{'shake_amplitude', 'duration', 'character'}:
+		'dialogic_rr_002':
 			_shake_character_event(event)
 
 

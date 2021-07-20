@@ -12,6 +12,7 @@ func _set_default_data():
 	event_data = {
 		'shake_amplitude': 1.0,
 		'duration': 0.25,
+		'event_id': 'dialogic_rr_001',
 	}
 	get_header().show_character_picker(false)
 

@@ -3,10 +3,12 @@ extends "res://addons/dialogic/Editor/Events/Parts/EventPart.gd"
 
 # has an event_data variable that stores the current data!!!
 
+const FADE_KEY := 'fade'
 ## node references
 onready var image_button = $HBox/ImageButton
 onready var clear_button = $HBox/ClearButton
 onready var name_label = $HBox/Name
+onready var fade_check_box = $HBox/FadeCheckBox
 
 # used to connect the signals
 func _ready():
@@ -30,6 +32,7 @@ func load_data(data:Dictionary):
 		emit_signal("request_close_body")
 	
 	clear_button.disabled = not bool(event_data['background'])
+	fade_check_box.pressed = event_data[FADE_KEY]
 	
 
 # has to return the wanted preview, only useful for body parts
@@ -62,3 +65,7 @@ func _on_ClearButton_pressed():
 	
 	# informs the parent about the changes!
 	data_changed()
+
+
+func _on_FadeCheckBox_toggled(button_pressed):
+	event_data[FADE_KEY] = button_pressed

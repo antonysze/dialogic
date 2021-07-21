@@ -483,7 +483,7 @@ margin_bottom = 131.0
 size_flags_horizontal = 3
 text = "Box padding Horizontal"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
+[node name="HBoxContainer-BoxpaddingH" type="HBoxContainer" parent="VBoxContainer/TabContainer/Dialog Box/Column/GridContainer"]
 margin_left = 136.0
 margin_top = 112.0
 margin_right = 288.0
@@ -1082,28 +1082,6 @@ margin_left = 78.0
 margin_right = 152.0
 margin_bottom = 24.0
 step = 0.1
-value = 48.0
-allow_greater = true
-allow_lesser = true
-
-[node name="GridContainer-HorizontalOffset" type="GridContainer" parent="VBoxContainer/TabContainer/Name Label/Column3"]
-margin_top = 54.0
-margin_right = 270.0
-margin_bottom = 78.0
-columns = 2
-
-[node name="Label-HorizontalOffset" type="Label" parent="VBoxContainer/TabContainer/Name Label/Column3/GridContainer-HorizontalOffset"]
-margin_top = 5.0
-margin_right = 192.0
-margin_bottom = 19.0
-size_flags_horizontal = 3
-text = "Horizontal Offset"
-
-[node name="HorizontalOffset" type="SpinBox" parent="VBoxContainer/TabContainer/Name Label/Column3/GridContainer-HorizontalOffset"]
-margin_left = 196.0
-margin_right = 270.0
-margin_bottom = 24.0
-max_value = 999.0
 value = 48.0
 allow_greater = true
 allow_lesser = true

@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/dialogic/Editor/Events/Parts/ResourcePickers/Characters/CharacterPicker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/dialogic/Editor/Events/Parts/Custom/EventPart_ShakeSelector.gd" type="Script" id=2]
+[ext_resource path="res://addons/dialogic/Editor/Events/Common/SpinBoxPreventDnD.gd" type="Script" id=3]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox_Intensity" type="SpinBox" parent="."]
+margin_right = 170.0
+margin_bottom = 40.0
+min_value = 0.1
+step = 0.1
+value = 1.0
+allow_greater = true
+align = 1
+script = ExtResource( 3 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+margin_left = 174.0
+margin_right = 292.0
+margin_bottom = 40.0
+mouse_filter = 1
+custom_constants/margin_left = 10
+
+[node name="Title" type="Label" parent="MarginContainer2"]
+margin_left = 10.0
+margin_top = 7.0
+margin_right = 118.0
+margin_bottom = 33.0
+text = "Intensity"
+
+[node name="SpinBox_Duration" type="SpinBox" parent="."]
+margin_left = 296.0
+margin_right = 466.0
+margin_bottom = 40.0
+min_value = 0.05
+step = 0.05
+value = 1.0
+allow_greater = true
+align = 1
+script = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 470.0
+margin_right = 564.0
+margin_bottom = 40.0
+mouse_filter = 1
+custom_constants/margin_left = 10
+
+[node name="Title" type="Label" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 7.0
+margin_right = 94.0
+margin_bottom = 33.0
+text = "Seconds"
+
+[node name="CharacterPicker" parent="." instance=ExtResource( 1 )]
+margin_left = 568.0
+margin_right = 722.0
+margin_bottom = 40.0

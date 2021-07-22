@@ -1,14 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/dialogic/Editor/Events/styles/Shake.tres" type="StyleBox" id=1]
 [ext_resource path="res://addons/dialogic/Editor/Events/Parts/Custom/ShakeSelector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/dialogic/Editor/Events/Templates/EventTemplate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/dialogic/Images/Event Icons/Main Icons/animation-shake.png" type="Texture" id=6]
 
+[sub_resource type="Image" id=3]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=2]
+flags = 4
+flags = 4
+image = SubResource( 3 )
+size = Vector2( 16, 16 )
+
 [node name="EventTemplate" instance=ExtResource( 4 )]
 margin_bottom = 46.0
+focus_mode = 1
 event_data = {
-"duration": 1.0,
+"duration": 0.25,
 "event_id": "dialogic_rr_001",
 "intensity": 1.0
 }
@@ -38,6 +54,9 @@ margin_bottom = 42.0
 margin_right = 1908.0
 margin_bottom = 36.0
 
+[node name="Warning" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="0"]
+icon = SubResource( 2 )
+
 [node name="IconMarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="1"]
 margin_right = 45.0
 margin_bottom = 36.0
@@ -52,27 +71,27 @@ expand = true
 [node name="TitleHBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="2"]
 visible = true
 margin_left = 49.0
-margin_right = 199.0
+margin_right = 211.0
 margin_bottom = 36.0
 
 [node name="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Header/TitleHBoxContainer" index="0"]
 margin_bottom = 36.0
 
 [node name="TitleMarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Header/TitleHBoxContainer" index="1"]
-margin_right = 150.0
+margin_right = 162.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 120, 0 )
 
 [node name="TitleLabel" parent="PanelContainer/MarginContainer/VBoxContainer/Header/TitleHBoxContainer/TitleMarginContainer" index="0"]
 margin_top = 5.0
-margin_right = 137.0
+margin_right = 149.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 120, 0 )
-text = "ShakeScreen"
+text = "Shake Screen"
 
 [node name="Content" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="3"]
-margin_left = 203.0
-margin_right = 845.0
+margin_left = 215.0
+margin_right = 789.0
 margin_bottom = 36.0
 
 [node name="ExpandControl" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="4"]
@@ -80,7 +99,7 @@ margin_left = 318.0
 margin_right = 382.0
 
 [node name="Spacer" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="5"]
-margin_left = 849.0
+margin_left = 793.0
 margin_right = 1870.0
 margin_bottom = 36.0
 

@@ -8,7 +8,7 @@ onready var original_pos: Vector2 = rect_position
 var background_tween: Tween
 var background: TextureRect
 var shake_tween: Tween
-var shake_amplitude: float
+var shake_intensity: float
 
 var auto_advance_enabled := false
 
@@ -121,7 +121,7 @@ func _shake_screen_event(event: Dictionary):
 		shake_tween.seek(INF)
 	var duration = event['duration']
 #warning-ignore:return_value_discarded
-	shake_amplitude = event['shake_amplitude'] * get_viewport_rect().size.y / 100.0
+	shake_intensity = event['intensity'] * get_viewport_rect().size.y / 100.0
 #warning-ignore:return_value_discarded
 	shake_tween.interpolate_method(self, '_shake_dialogue_box', 0.0, 1.0, duration, Tween.TRANS_LINEAR)
 #warning-ignore:return_value_discarded
@@ -133,12 +133,12 @@ func _shake_character_event(event: Dictionary):
 	var shake_all = event['character'] == '[All]'
 	for p in $Portraits.get_children():
 		if shake_all || p.character_data['file'] == event['character']:
-			p.shake(event['shake_amplitude'], event['duration'])
+			p.shake(event['intensity'], event['duration'])
 	_load_next_event()
 
 
 func _shake_dialogue_box(target):
-	TweenUtils.shake_control(self, original_pos, target, shake_amplitude)
+	TweenUtils.shake_control(self, original_pos, target, shake_intensity)
 
 
 # mouse click event
